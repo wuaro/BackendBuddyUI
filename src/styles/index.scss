@@ -1,0 +1,66 @@
+@import './variables.scss';
+@import './mixin.scss';
+@import './sidebar.scss';
+@import './element.scss';
+@import './transition.scss';
+
+html,
+body {
+  // 一些初始化样式设置
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB,
+    Microsoft YaHei, Arial, sans-serif;
+}
+
+#app {
+  height: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+a:focus,
+a:active {
+  // 去掉链接被点击或聚焦时的边框（避免多余视觉效果）
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  // 鼠标悬停在链接上时显示手型光标。
+  cursor: pointer;
+  // 链接的颜色继承父元素，避免强制应用默认的蓝色
+  color: inherit;
+  // 移除链接的下划线，保持干净的视觉效果。
+  text-decoration: none;
+}
+
+div:focus {
+  outline: none;
+}
+
+.clearfix {
+
+  // 使用伪元素: after清除浮动
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    // 创建一个不可见的伪元素，强制触发清除浮动的行为。
+    content: ' ';
+    // 同时清除左浮动和右浮动的影响，确保容器能够包含内部的浮动子元素。
+    clear: both;
+    height: 0;
+  }
+}
