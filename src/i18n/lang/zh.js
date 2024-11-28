@@ -1,3 +1,6 @@
+/**
+ * 系统的静态信息（中文）
+ */
 export default {
   login: {
     title: '用户登录',

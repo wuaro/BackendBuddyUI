@@ -1,7 +1,8 @@
 import request from '@/utils/request'
 
 /**
- * 获取所有角色
+ * 获取所有角色：
+ * '/role/list'
  */
 export const roleList = () => {
   return request({
@@ -10,7 +11,7 @@ export const roleList = () => {
 }
 
 /**
- * 获取指定角色的权限
+ * 获取指定角色的权限：`/role/permission/${roleId}`
  */
 export const rolePermission = roleId => {
   return request({
@@ -19,7 +20,7 @@ export const rolePermission = roleId => {
 }
 
 /**
- * 为角色修改权限
+ * 为角色修改权限：'/role/distribute-permission',
  */
 export const distributePermission = data => {
   return request({

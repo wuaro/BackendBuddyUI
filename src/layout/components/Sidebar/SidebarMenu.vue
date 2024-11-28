@@ -23,9 +23,9 @@ import SidebarItem from './SidebarItem'
 import { useRouter, useRoute } from 'vue-router'
 import { filterRouters, generateMenus } from '@/utils/route'
 
-// 计算路由表结构
 const router = useRouter()
 const routes = computed(() => {
+  // router.getRoutes()：获取当前用户所有路由
   const filterRoutes = filterRouters(router.getRoutes())
   return generateMenus(filterRoutes)
 })

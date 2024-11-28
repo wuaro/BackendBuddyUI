@@ -9,6 +9,7 @@ export default {
     title: 'user',
     icon: 'personnel'
   },
+
   children: [
     {
       path: '/user/role',

@@ -16,12 +16,16 @@ const router = useRouter()
  * 数据解析成功之后的回调
  */
 const onSuccess = async ({ header, results }) => {
+  // 筛选数据
   const updateData = generateData(results)
+  // 给后台发请求，更新数据
   await userBatchImport(updateData)
+  // 操作成功时弹出的消息。
   ElMessage.success({
     message: results.length + i18n.t('msg.excel.importSuccess'),
     type: 'success'
   })
+  // 在导入成功后，用户会被重定向到 /user/manage 页面
   router.push('/user/manage')
 }
 

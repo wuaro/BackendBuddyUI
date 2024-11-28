@@ -1,5 +1,8 @@
 // 专门处理权限路由的模块
 import { publicRoutes, privateRoutes } from '@/router'
+// publicRoutes  是静态路由，所有用户都能访问的路由（例如登录页、404 页面等）。
+// privateRoutes 是私有路由，只有特定权限的用户才能访问的路由。
+
 export default {
   namespaced: true,
   state: {

@@ -20,8 +20,8 @@
         使用 <svg> 标签显示项目内部图标。
         <use> 元素通过 xlink:href 引用内部图标的路径。
       :xlink:href="iconName":
+        SVG 中用于指定引用路径的属性。
         引用内部图标的具体路径，iconName 是一个计算属性，自动为图标路径添加 #icon- 前缀。
-
   -->
   <svg v-else class="svg-icon" :class="className" aria-hidden="true">
     <use :xlink:href="iconName" />
@@ -36,12 +36,12 @@ import { defineProps, computed } from 'vue'
 const props = defineProps({
   // icon 图标
   icon: {
-    type: String, // 图标的标识，支持传入图标名称或 URL。
-    required: true // 必填项，组件依赖此属性渲染图标。
+    type: String, // 强制类型必须为String
+    required: true // 设为 true，调用组件时必须传递该属性。组件依赖此属性渲染图标。
   },
   // 图标类名
   className: {
-    type: String, // 自定义类名，用于扩展组件的样式。
+    type: String, // 强制类型必须为String
     default: '' // 非必填项，默认为空字符串。
   }
 })

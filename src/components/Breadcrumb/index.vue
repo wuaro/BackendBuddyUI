@@ -5,11 +5,11 @@
         v-for="(item, index) in breadcrumbData"
         :key="item.path"
       >
-        <!-- 不可点击项 -->
+        <!-- 不可点击项（最后一项：当前页 不能点击） -->
         <span v-if="index === breadcrumbData.length - 1" class="no-redirect">{{
           generateTitle(item.meta.title)
         }}</span>
-        <!-- 可点击项 -->
+        <!-- 可点击项（前n-1项都可以点击） -->
         <a v-else class="redirect" @click.prevent="onLinkClick(item)">{{
           generateTitle(item.meta.title)
         }}</a>
@@ -24,13 +24,19 @@ import { ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 
+// useRoute：Vue Router 提供的 API，可以访问当前的路由对象。
 const route = useRoute()
-// 生成数组数据
+console.log('当前的路由信息：')
+console.log(route)
+
+// 用于存储面包屑数据 数组
 const breadcrumbData = ref([])
+
 const getBreadcrumbData = () => {
   breadcrumbData.value = route.matched.filter(
     item => item.meta && item.meta.title
   )
+  console.log('breadcrumbData', breadcrumbData)
 }
 // 监听路由变化时触发
 watch(

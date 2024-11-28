@@ -45,22 +45,26 @@ watchSwitchLang(() => {
   excelName.value = exportDefaultName
 })
 
+const loading = ref(false)
 /**
  * 导出按钮点击事件
+ * @returns {Promise<void>}
  */
-const loading = ref(false)
 const onConfirm = async () => {
   loading.value = true
+  // 通过 API 获取所有用户的数据。
   const allUser = (await getUserManageAllList()).list
-  // 导入工具包
+  // 动态导入 Export2Excel 工具，用于将数据导出为 Excel 文件。
   const excel = await import('@/utils/Export2Excel')
+  // 调用 formatJson 函数，将用户数据格式化为 Excel 导出所需的二维数组。
   const data = formatJson(USER_RELATIONS, allUser)
+  // 调用导入的 export_json_to_excel 函数，执行 Excel 导出。
   excel.export_json_to_excel({
     // excel 表头
     header: Object.keys(USER_RELATIONS),
     // excel 数据（二维数组结构）
     data,
-    // 文件名称
+    // 文件名称(用户在input元素中输入)
     filename: excelName.value || exportDefaultName,
     // 是否自动列宽
     autoWidth: true,
@@ -70,7 +74,12 @@ const onConfirm = async () => {
   closed()
 }
 
-// 该方法负责将数组转化成二维数组
+/**
+ * 将用户数据转化为 Excel 所需的二维数组格式
+ * @param headers
+ * @param rows
+ * @returns {*}
+ */
 const formatJson = (headers, rows) => {
   // 首先遍历数组
   // [{ username: '张三'},{},{}]  => [[’张三'],[],[]]
@@ -92,7 +101,7 @@ const formatJson = (headers, rows) => {
 }
 
 /**
- * 关闭
+ * 关闭对话框
  */
 const closed = () => {
   loading.value = false

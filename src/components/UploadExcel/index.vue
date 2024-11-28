@@ -111,6 +111,7 @@ const readerData = rawFile => {
     // 该事件在读取操作完成时触发
     // https://developer.mozilla.org/zh-CN/docs/Web/API/FileReader/onload
     reader.onload = e => {
+      console.log(e)
       // 1. 获取解析到的数据
       const data = e.target.result
       // 2. 利用 XLSX 对数据进行解析

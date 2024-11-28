@@ -26,7 +26,7 @@
 <script setup>
 import { defineProps, defineEmits, ref, watch } from 'vue'
 import { roleList } from '@/api/role'
-import { watchSwitchLang } from '@/utils/i18n'
+// import { watchSwitchLang } from '@/utils/i18n'
 import { userRoles, updateRole } from '@/api/user-manage'
 import { ElMessage } from 'element-plus'
 import { useI18n } from 'vue-i18n'
@@ -52,7 +52,7 @@ const getListData = async () => {
   console.log(allRoleList.value)
 }
 getListData()
-watchSwitchLang(getListData)
+// watchSwitchLang(getListData)
 
 // 当前用户角色
 const userRoleTitleList = ref([])
