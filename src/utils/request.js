@@ -4,13 +4,13 @@ import { ElMessage } from 'element-plus'
 import { isCheckTimeout } from '@/utils/auth'
 
 const service = axios.create({
-  baseURL: process.env.VUE_APP_BASE_API,
+  baseURL: process.env.VUE_APP_BASE_API, // 动态获取环境变量的值，根据不同的环境（开发、生产），取不同的baseUrl
   timeout: 5000
 })
 
 // 请求拦截器
 service.interceptors.request.use(
-  config => {
+  (config) => {
     // 在这个位置需要统一的去注入token
     if (store.getters.token) {
       if (isCheckTimeout()) {
@@ -25,14 +25,14 @@ service.interceptors.request.use(
     config.headers['Accept-Language'] = store.getters.language
     return config // 必须返回配置
   },
-  error => {
+  (error) => {
     return Promise.reject(error)
   }
 )
 
 // 响应拦截器
 service.interceptors.response.use(
-  response => {
+  (response) => {
     const { success, message, data } = response.data
     //   要根据success的成功与否决定下面的操作
     if (success) {
@@ -43,7 +43,7 @@ service.interceptors.response.use(
       return Promise.reject(new Error(message))
     }
   },
-  error => {
+  (error) => {
     // 处理 token 超时问题
     if (
       error.response &&

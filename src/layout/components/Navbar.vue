@@ -1,3 +1,4 @@
+<!-- 顶部的Navbar组件（导航栏） -->
 <template>
   <div class="navbar">
     <hamburger class="hamburger-container" />

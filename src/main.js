@@ -5,7 +5,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import installElementPlus from './plugins/element'
-// 导入 svgIcon
+// 导入 svgIcon，installIcons对应的是 '@/icons/index.js'中export default (app)所暴露的全局注册函数
 import installIcons from '@/icons'
 // filter
 import installFilter from '@/filters'
@@ -20,8 +20,4 @@ installElementPlus(app)
 installIcons(app)
 installFilter(app)
 installDirective(app)
-app
-  .use(store)
-  .use(router)
-  .use(i18n)
-  .mount('#app')
+app.use(store).use(router).use(i18n).mount('#app')

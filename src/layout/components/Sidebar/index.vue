@@ -1,3 +1,4 @@
+<!-- Sidebar组件（侧边栏） -->
 <template>
   <div class="">
     <div class="logo-container">

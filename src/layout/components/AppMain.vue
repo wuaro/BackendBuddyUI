@@ -1,3 +1,4 @@
+<!-- AppMain组件（主内容区） -->
 <template>
   <div class="app-main">
     <router-view v-slot="{ Component, route }">
@@ -22,7 +23,7 @@ const route = useRoute()
 /**
  * 生成 title
  */
-const getTitle = route => {
+const getTitle = (route) => {
   let title = ''
   if (!route.meta) {
     // 处理无 meta 的路由
