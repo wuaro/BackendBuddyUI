@@ -1,4 +1,3 @@
-<!-- layout组件： -->
 <template>
   <!-- sidebarOpened 是 Vuex 的一个状态值，用于判断侧边栏是否展开： -->
   <div
